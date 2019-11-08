@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+        janus:
+                build: .
+                command: ['/opt/janus/bin/janus']
+                ports:
+                        - 8088:8088
+                network_mode: "host"
+        nginx:
+                image: nginx
+                volumes:
+                        - ./html:/usr/share/nginx/html:ro
+                ports:
+                        - 8080:80
+                network_mode: "host"
+                       
